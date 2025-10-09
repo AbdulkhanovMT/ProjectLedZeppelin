@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Properties>
+        <Property name="baseDir">logs</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="RollingFile"
+                     fileName="logs/stock-stats.log"
+                     filePattern="logs/$${date:yyyy-MM}/stock-stats-%d{yyyy-MM-dd-HH}-%i.log"
+                     immediateFlush="true">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %logger{1} - %msg%n</Pattern>
+            </PatternLayout>
+            <DefaultRolloverStrategy>
+                <Delete basePath="%{baseDir}" maxDepth="1">
+                    <IfFileName glob="stock-stats*.log"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+            <TimeBasedTriggeringPolicy interval="1d"/>
+        </RollingFile>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%d %p %logger{1} - %msg%n</Pattern>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
