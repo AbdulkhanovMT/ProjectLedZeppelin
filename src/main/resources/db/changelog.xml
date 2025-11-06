@@ -5,18 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
-    <changeSet id="1762416092221-1" author="abdulkhanov">
-        <createTable tableName="role">
-            <column name="value" type="VARCHAR(128)">
-                <constraints nullable="false"
-                             primaryKey="true"
-                             primaryKeyName="role_pkey"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet id="xml-2" author="liquibase-docs">
-        <insert tableName="role">
-            <column name="value" value="ADMIN" />
-        </insert>
-    </changeSet>
+    <include file="/db/history/2025/06-01-role.xml" relativeToChangelogFile="false"/>
+
+
 </databaseChangeLog>
