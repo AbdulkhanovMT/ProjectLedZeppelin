@@ -3,19 +3,20 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-5.0.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
-    <changeSet id="1" author="liquibase">
-        <createTable tableName="department">
-            <column name="id" type="int">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="dept" type="varchar(${dep.size})">
-                <constraints nullable="false"/>
-            </column>
-            <column name="emp_id" type="int">
-                <constraints nullable="false"/>
+    <changeSet id="1762416092221-1" author="abdulkhanov">
+        <createTable tableName="role">
+            <column name="value" type="VARCHAR(128)">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="role_pkey"/>
             </column>
         </createTable>
+    </changeSet>
+    <changeSet id="xml-2" author="liquibase-docs">
+        <insert tableName="role">
+            <column name="value" value="ADMIN" />
+        </insert>
     </changeSet>
 </databaseChangeLog>
